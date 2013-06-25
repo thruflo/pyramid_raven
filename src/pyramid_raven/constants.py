@@ -11,6 +11,8 @@ ATTR_PROPERTIES = [
     'layout_manager',
     'matchdict',
     'matched_route',
+    'method',
+    'path_url',
     'root',
     'subpath',
     'traversed',
