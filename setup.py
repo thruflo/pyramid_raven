@@ -14,7 +14,7 @@ def _read(file_name):
 
 setup(
     name = 'pyramid_raven',
-    version = '0.1.1',
+    version = '0.1.2',
     description = 'Integrate raven and raven-js with a Pyramid web application.',
     author = 'James Arthur',
     author_email = 'username: thruflo, domain: gmail.com',
