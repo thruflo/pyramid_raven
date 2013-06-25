@@ -56,7 +56,7 @@ def includeme(config, get_raven=None, panel=None):
     # Provide the client as ``request.raven``.
     config.add_request_method(get_raven, 'raven', reify=True)
     
-    # Provide the utility as ``request.geoip``.
+    # Configure the ``raven-js`` panel.
     default_tmpl = 'pyramid_raven:templates/panel.mako'
     panel_tmpl = settings.get('pyramid_raven.panel_tmpl', default_tmpl)
     config.add_panel(panel, 'raven-js', renderer=panel_tmpl)
