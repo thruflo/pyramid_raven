@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Provides a GeoIPLookup utility."""
+"""Provides a raven client factory."""
 
 __all__ = [
     'get_raven_client'
