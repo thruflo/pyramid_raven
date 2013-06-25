@@ -1,4 +1,8 @@
 
+## 0.1.1
+
+Include the mako template in the manifest (and thus the sdist).
+
 ## 0.1
 
 Initial release.
