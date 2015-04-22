@@ -11,8 +11,8 @@ logger = logging.getLogger(__name__)
 
 import os
 import re
-import urlparse
 
+from pyramid.compat import urlparse
 from pyramid.path import DottedNameResolver
 
 from .constants import DEFAULT_RAVEN_JS_SRC
@@ -89,7 +89,7 @@ def raven_js_panel(context, request, env=None, to_host_path=None, to_public=None
           >>> vars = raven_js_panel(None, mock_request, env=mock_env)
           >>> vars['dsn']
           'https://user@app.getsentry.com/1'
-          >>> vars['hosts']
+          >>> list(vars['hosts'])
           ['getsentry\\.com\\/']
           >>> assert vars['src'] == DEFAULT_RAVEN_JS_SRC
       
@@ -101,7 +101,7 @@ def raven_js_panel(context, request, env=None, to_host_path=None, to_public=None
           ...       'pyramid_raven.include_hosts': 'baz.com bar.net'
           ... }
           >>> vars = raven_js_panel(None, mock_request, env=mock_env)
-          >>> vars['hosts']
+          >>> list(vars['hosts'])
           ['getsentry\\.com\\/', 'foo\\.com', 'baz\\.com', 'bar\\.net']
       
       As per urls returned by a factory specified as a dotted path::
@@ -113,7 +113,7 @@ def raven_js_panel(context, request, env=None, to_host_path=None, to_public=None
           ...       'pyramid_raven.panel.doctest_include_hosts_factory'
           ... }
           >>> vars = raven_js_panel(None, mock_request, env=mock_env)
-          >>> vars['hosts']
+          >>> list(vars['hosts'])
           ['getsentry\\.com\\/', 'blob\\.io']
           >>> del panel.doctest_include_hosts_factory
       
