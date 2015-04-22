@@ -57,7 +57,9 @@ def includeme(config, get_raven=None, panel=None):
     config.add_request_method(get_raven, 'raven', reify=True)
     
     # Configure the ``raven-js`` panel.
-    default_tmpl = 'pyramid_raven:templates/panel.mako'
-    panel_tmpl = settings.get('pyramid_raven.panel_tmpl', default_tmpl)
-    config.add_panel(panel, 'raven-js', renderer=panel_tmpl)
+    if hasattr(config, "add_panel"):
+        # Soft detect if we have pyramid_layout installed
+        default_tmpl = 'pyramid_raven:templates/panel.mako'
+        panel_tmpl = settings.get('pyramid_raven.panel_tmpl', default_tmpl)
+        config.add_panel(panel, 'raven-js', renderer=panel_tmpl)
 
