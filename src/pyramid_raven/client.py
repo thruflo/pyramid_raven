@@ -31,9 +31,11 @@ def as_context_data(request, method_names=None, property_names=None, safe=None):
           >>> r.charset = 'UTF-8'
           >>> r.cookies = {'a': 'b'}
           >>> r.registry=mock_registry
-          >>> as_context_data(r)
-          {'attributes': {'matchdict': None, 'matched_route': None}, 'cookies': {u'a': u'b'}, 'params (POST)': {}, 'query (GET)': {}, 'headers': {'Host': 'localhost:80'}}
-      
+          >>> as_context_data(r)['attributes']['method']
+          'GET'
+          >>> str(as_context_data(r)['cookies']['a'])
+          'b'
+
       Adds attributes specified in the settings::
       
           >>> mock_registry.settings = {

@@ -16,7 +16,11 @@ Install using [pip][]:
 
     pip install pyramid_raven
 
-Provide a [SENTRY_DSN environment variable][]:
+Configure Raven DSN address in the INI configuration of your application:
+
+    raven.dsn = https://xxx:yyy@sentry.example.com/1
+
+... or provide a [SENTRY_DSN environment variable][]:
 
     SENTRY_DSN=http://public:secret@example.com/1
 
@@ -56,7 +60,13 @@ You can use it to record server side errors:
         
         # XXX E.g.: render error page.
         # ...
-    
+
+### Client side JavaScript errors
+
+Client side error tracking requires that you have
+[pyramid_layout](http://pyramid-layout.readthedocs.org/)
+configured before `pyramid_raven`.
+
 And client side errors:
 
     <!-- in production, in the head of your main layout, above all other js -->
