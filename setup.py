@@ -9,12 +9,12 @@ def _read(file_name):
     text = sock.read()
     sock.close()
     return text
-    
+
 
 
 setup(
     name = 'pyramid_raven',
-    version = '0.1.2',
+    version = '0.2.0',
     description = 'Integrate raven and raven-js with a Pyramid web application.',
     author = 'James Arthur',
     author_email = 'username: thruflo, domain: gmail.com',
