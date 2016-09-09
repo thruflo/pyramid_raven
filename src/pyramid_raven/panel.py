@@ -129,7 +129,11 @@ def raven_js_panel(context, request, env=None, to_host_path=None, to_public=None
     
     # Unpack.
     settings = request.registry.settings
-    sentry_dsn = env['SENTRY_DSN']
+    sentry_dsn = settings.get('raven.dsn') or env.get('SENTRY_DSN')
+    if not sentry_dsn:
+        raise EnvironmentError(
+            'Raven DSN not found. It should be set in env or .ini file.')
+
     strip = lambda s: s.strip()
     
     # Get the raven javascript ``src`` url.
@@ -150,7 +154,7 @@ def raven_js_panel(context, request, env=None, to_host_path=None, to_public=None
     if include_hosts_factory: # if a dotted path to a factory function...
         factory = DottedNameResolver().resolve(include_hosts_factory)
         urls += factory(request)
-    hosts = map(to_host_path, urls)
+    hosts = list(map(to_host_path, urls))
     
     # Pass the values through to the panel template.
     return {
