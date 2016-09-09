@@ -150,7 +150,7 @@ def raven_js_panel(context, request, env=None, to_host_path=None, to_public=None
     if include_hosts_factory: # if a dotted path to a factory function...
         factory = DottedNameResolver().resolve(include_hosts_factory)
         urls += factory(request)
-    hosts = map(to_host_path, urls)
+    hosts = list(map(to_host_path, urls))
     
     # Pass the values through to the panel template.
     return {
