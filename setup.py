@@ -12,7 +12,7 @@ def _read(file_name):
 
 setup(
     name = 'pyramid_raven',
-    version = '0.2.1',
+    version = '0.2.2',
     description = 'Integrate raven and raven-js with a Pyramid web application.',
     long_description_markdown_filename='README.md',
     author = 'James Arthur',
