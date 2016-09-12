@@ -10,12 +10,11 @@ def _read(file_name):
     sock.close()
     return text
 
-
-
 setup(
     name = 'pyramid_raven',
     version = '0.2.0',
     description = 'Integrate raven and raven-js with a Pyramid web application.',
+    long_description_markdown_filename='README.md',
     author = 'James Arthur',
     author_email = 'username: thruflo, domain: gmail.com',
     url = 'http://github.com/thruflo/pyramid_raven',
@@ -45,6 +44,9 @@ setup(
         'pyramid',
         'pyramid_layout',
         'raven',
+    ],
+    setup_requires=[
+        'setuptools-markdown'
     ],
     tests_require = [
         'coverage',
